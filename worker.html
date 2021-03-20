@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!-- Template by Quackit.com -->
+<!-- Images by various sources under the Creative Commons CC0 license and/or the Creative Commons Zero license. 
+Although you can use them, for a more unique website, replace these images with your own. -->
+<html lang="zh">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>工人数据</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!--d3包-->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
+    <link href="css/custom.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom Fonts from Google -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    
+</head>
+
+<body>
+
+
+    <!-- Navigation -->
+    <nav id="siteNav" class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Logo and responsive toggle -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">标题</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">
+                	<span class="glyphicon glyphicon-fire"></span> 
+                	组名
+                </a>
+            </div>
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                        <a href="./index.html">主页</a>
+                    </li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">类型<span class="caret"></span></a>
+						<ul class="dropdown-menu" aria-labelledby="about-us">
+							<li><a href="#">公司数据</a></li>
+							<li><a href="#">工人数据</a></li>
+						</ul>
+					</li>
+                </ul>
+                
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
+    </nav>
+
+	<!-- Header -->
+    <header>
+        <div class="header-pic">
+            <!--图片-->
+            <div id="container" style="height: 100%;background-color: white;color:yellowgreen"></div>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+            <!-- Uncomment this line if you want to dataTool extension
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/dataTool.min.js"></script>
+            -->
+            <!-- Uncomment this line if you want to use gl extension
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+            -->
+            <!-- Uncomment this line if you want to echarts-stat extension
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+            -->
+            <!-- Uncomment this line if you want to use map
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/map/js/china.js"></script>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/map/js/world.js"></script>
+            -->
+            <!-- Uncomment these two lines if you want to use bmap extension
+            <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=<Your Key Here>"></script>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/bmap.min.js"></script>
+            -->
+
+            <script type="text/javascript">
+                var dom = document.getElementById("container");
+                var myChart = echarts.init(dom);
+                var app = {};
+
+                var option;
+
+
+
+                var data = [];
+                for (let i = 0; i < 5; ++i) {
+                    data.push(Math.round(Math.random() * 200));
+                }
+
+                option = {
+                    color:'yellowgreen',
+                    
+                    yAxis: {
+                        max: 'dataMax',
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: ['A', 'B', 'C', 'D', 'E'],
+                        //inverse: true,
+                        animationDuration: 3000,
+                        animationDurationUpdate: 3000,
+                        //max: 2 // only the largest 3 bars will be displayed
+                    },
+                    series: [{
+                        //realtimeSort: true,
+                        name: 'X',
+                        type: 'bar',
+                        data: data,
+                        label: {
+                            show: true,
+                            position: 'right',
+                            valueAnimation: true,
+                            position:data>0?'top':'bottom',
+                            position:'top',
+                        }
+                    }],
+                    legend: {
+                        show: true
+                    },
+                    animationDuration: 0,
+                    animationDurationUpdate: 30000,
+                    animationEasing: 'linear',
+                    animationEasingUpdate: 'linear'
+                };
+
+                function run () {
+                    var data = option.series[0].data;
+                    for (var i = 0; i < data.length; ++i) 
+                    {
+                            data[i] = Math.round(Math.random() * 2000);
+                    }
+                    myChart.setOption(option);
+                }
+
+                setTimeout(function() {
+                    run();
+                }, 0);
+                setInterval(function () {
+                    run();
+                }, 30000);
+
+                if (option && typeof option === 'object') {
+                    myChart.setOption(option);
+                }
+
+            </script>
+        </div>
+    </header>
+    <section class="content content-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                	<h2 class="section-header">分析</h2>
+                	<p class="lead text-light">Holisticly predominate extensible testing procedures for reliable supply chains. Dynamically innovate resource-leveling customer service for state of the art customer service.</p>
+                	<!-- <a href="#" class="btn btn-default btn-lg">Test It</a> -->
+                </div>    
+                <div class="col-sm-6">
+                    <img class="img-responsive img-circle center-block" src="images/iphone.jpg" alt="">
+                </div>            
+                
+            </div>
+        </div>
+    </section>    
+
+        
+
+
+    <!-- jQuery -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    
+    <!-- Custom Javascript -->
+    <script src="js/custom.js"></script>
+
+</body>
+
+</html>
