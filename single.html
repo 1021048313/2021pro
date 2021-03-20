@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<!-- Template by Quackit.com -->
+<!-- Images by various sources under the Creative Commons CC0 license and/or the Creative Commons Zero license. 
+Although you can use them, for a more unique website, replace these images with your own. -->
+<html lang="zh">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>一个普通人</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!--d3包-->
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
+    <link href="css/custom.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Custom Fonts from Google -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    
+</head>
+
+<body>
+
+
+    <!-- Navigation -->
+     <!-- Navigation -->
+    <nav id="siteNav" class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Logo and responsive toggle -->
+            <div class="navbar-header">
+                <!-- <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">标题</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button> -->
+                <a class="navbar-brand" href="https://gitlab.com/NKCS_ABMs/ambs">
+                	<span class="glyphicon glyphicon-fire"></span> 
+                	团队
+                </a>
+            </div>
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                        <a class="navbar-brand" href="#">
+                            主页
+                        </a>
+                    </li>
+					<!-- <li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">类型<span class="caret"></span></a>
+						<ul class="dropdown-menu" aria-labelledby="about-us">
+							<li><a href="./c_fixedcost.html">固定成本</a></li>
+							<li><a href="./c_current.html">流动比率</a></li>
+                            <li><a href="./c_quick.html">速动比率</a></li>
+						</ul>
+					</li> -->
+                </ul>
+                
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container -->
+    </nav>
+
+	<!-- Header -->
+    <header>
+        <div class="header-pic">
+            <!--图片-->
+            <div id="container" style="height: 100%;background-color: white;color:yellowgreen"></div>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+            <!-- Uncomment this line if you want to dataTool extension
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/dataTool.min.js"></script>
+            -->
+            <!-- Uncomment this line if you want to use gl extension
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+            -->
+            <!-- Uncomment this line if you want to echarts-stat extension
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+            -->
+            <!-- Uncomment this line if you want to use map
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/map/js/china.js"></script>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/map/js/world.js"></script>
+            -->
+            <!-- Uncomment these two lines if you want to use bmap extension
+            <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=<Your Key Here>"></script>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/bmap.min.js"></script>
+            -->
+
+
+            <!-- echarts图表部分 -->
+            <script type="text/javascript">
+                var dom = document.getElementById("container");
+                var myChart = echarts.init(dom);
+
+                var option;
+                var steplist=[]
+                var i
+                //100次步数
+                for(i=1;i<=100;i++)
+                {
+                    steplist.push(i+"");
+                }
+                // 基于准备好的dom，初始化echarts实例
+                var dom = document.getElementById("container");
+                var myChart = echarts.init(dom);
+
+                // 指定图表的配置项和数据
+                var steplist=[]
+                var i
+                //100次步数
+                for(i=1;i<=100;i++)
+                {
+                    steplist.push(i+"");
+                }
+                
+ 
+                var companylist=[]
+                //20个公司编号0-19
+                for(i=0;i<=19;i++)
+                {
+                    companylist.push(i+"");
+                }
+                var resource=[[1635.268565, 1685.903717, 1752.428386, 1818.863962, 1868.852857, 1935.536582, 2000.869956, 2067.582983, 2119.813148, 2186.508495, 2250.472206, 1817.481991, 1872.400153, 1939.421188, 2000.784542, 2067.870203, 2124.134887, 2190.972384, 2252.300296, 2319.480773, 2375.590015, 2442.668799, 2504.420686, 2570.360485, 2628.61314, 2695.059117, 2752.384226, 2816.944424, 2877.079021, 2944.092665, 2999.555383, 3065.464388, 3123.070646, 3189.242068, 3244.70732, 3312.090065, 3367.447685, 3434.946533, 3489.127818, 3556.458149, 3611.728813, 3678.53881, 3731.784094, 3799.750294, 3856.040384, 3924.143698, 3980.232645, 4048.476454, 4106.076803, 4173.50341, 4229.220878, 4298.124145, 4357.232537, 4424.926299, 4482.235636, 4551.051575, 4608.804237, 4676.77145, 4737.661551, 4807.355638, 4865.446608, 4934.626531, 4991.175566, 5060.50143, 5118.107613, 5187.229816, 5244.740795, 5313.367072, 5376.47191, 5446.170229, 5505.15322, 5574.001584, 5630.631175, 5699.685726, 5760.871451, 5830.084812, 5886.37371, 5954.840433, 6011.83724, 6081.692751, 6133.269, 6203.339483, 6267.259497, 6337.427374, 6392.363224, 6459.040124, 6515.983764, 6586.351547, 6647.632915, 6717.529844, 6780.501034, 6849.977847, 6905.759472, 6976.568792, 7035.918642, 7106.274787, 7161.581095, 7229.858685, 7291.171472, 7360.748518],
+[1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+[1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+[1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+[1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+[0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+[0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931, 0.6931],
+]
+                
+                var option = {
+                    // timeline:{
+                    //     axisType: 'category',
+                    //     autoPlay: true,
+                    //     playInterval: 1500,
+                    //     data: steplist,
+                    //     label:{
+                    //         fontSize: 18
+                    //     }
+                    // },
+                    baseOption:{
+
+        
+                        title: {
+                            text: '',
+                            left: 'center',
+                            textStyle:{
+                                fontSize:24
+                            }
+                        },
+                        tooltip: {
+                            trigger: 'axis',
+                            axisPointer: {
+                                type: 'cross',
+                                label: {
+                                    backgroundColor: '#6a7985'
+                                }
+                            }
+                            
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
+                            }
+                        },
+                        legend: { 
+                            data:['总财产',	'健康值','是否工作','工作经验','知识值','薪资','生产力']               
+                        },               
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        xAxis: [
+                            {
+                            type:'category',
+                            data: steplist,
+                            axisPointer: {
+                            type: 'shadow'
+                            },
+                            
+                            axisLabel: {
+                                formatter: function (value) {
+                                    return '{' + value + '| }\n{value|' + value + '}';
+                                },
+                                margin: 20,
+                                rich: {
+                                    value: {
+                                        lineHeight: 30,
+                                        fontSize: 18,
+                                        align: 'center'
+                                    },
+                                }
+                            } 
+                            
+                            },
+                        ],
+                        yAxis:[ 
+                            {
+                            name:'',
+                            type:'value',
+                            nameTextStyle:{
+                                fontSize:18
+                            },
+                            axisLabel:{
+                                fontSize:18
+                            }
+                            },                
+                        ],
+                        series: [                
+                        {
+                            name: '总财产',
+                            type: 'line',
+                            stack: '总量',
+                            areaStyle: {},
+                            emphasis: {
+                                focus: 'series'
+                            },
+                            data: resource[0]
+                        },
+                        {
+                            name: '健康值',
+                            type: 'line',
+                            stack: '总量',
+                            areaStyle: {},
+                            emphasis: {
+                                focus: 'series'
+                            },
+                            data: resource[1]
+                        },
+                        {
+                            name: '是否工作',
+                            type: 'line',
+                            stack: '总量',
+                            areaStyle: {},
+                            emphasis: {
+                                focus: 'series'
+                            },
+                            data: resource[2]
+                        },
+                        {
+                            name: '工作经验',
+                            type: 'line',
+                            stack: '总量',
+                            areaStyle: {},
+                            emphasis: {
+                                focus: 'series'
+                            },
+                            data:resource[3]
+                        },
+                        {
+                            name: '知识值',
+                            type: 'line',
+                            stack: '总量',
+                            areaStyle: {},
+                            emphasis: {
+                                focus: 'series'
+                            },
+                            data: resource[4]
+                        },
+                        {
+                            name: '薪资',
+                            type: 'line',
+                            stack: '总量',
+                            areaStyle: {},
+                            emphasis: {
+                                focus: 'series'
+                            },
+                            data: resource[5]
+                        },
+                        {
+                            name: '生产力',
+                            type: 'line',
+                            stack: '总量',
+                            label: {
+                                show: true,
+                                position: 'top'
+                            },
+                            areaStyle: {},
+                            emphasis: {
+                                focus: 'series'
+                            },
+                            data: resource[6]
+                        }
+                        
+
+                        ]
+                    },
+                    options:[]
+                };
+        
+                // for (var n = 0; n<steplist.length; n++){
+                //     option.options.push({
+                //         title:{
+                //             show:true,
+                //             text:'第'+steplist[n]+'步各公司总资产',
+                //             left: 'center',
+                //             textStyle:{
+                //                 fontSize:24
+                //             }
+                //         },
+                //         series:[
+                //             {
+                //             type: 'line',
+                //             seriesLayoutBy: 'row',
+                //             encode:{
+                //                 x:'step',
+                //                 y:steplist[n]
+                //             }
+                //             },
+                //         ]
+                //     });
+                // }
+        
+                // 使用刚指定的配置项和数据显示图表。
+                myChart.setOption(option);
+
+
+
+            </script>
+            
+        </div>
+    </header>
+    <section class="content content-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                	<h2 class="section-header">分析</h2>
+                	<p class="lead text-light">Holisticly predominate extensible testing procedures for reliable supply chains. Dynamically innovate resource-leveling customer service for state of the art customer service.</p>
+                	<!-- <a href="#" class="btn btn-default btn-lg">Test It</a> -->
+                </div>    
+                <div class="col-sm-6">
+                    <img class="img-responsive img-circle center-block" src="images/iphone.jpg" alt="">
+                </div>            
+                
+            </div>
+        </div>
+    </section>    
+
+        
+
+
+    <!-- jQuery -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    
+    <!-- Custom Javascript -->
+    <script src="js/custom.js"></script>
+
+</body>
+
+</html>
